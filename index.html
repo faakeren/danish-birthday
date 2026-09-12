@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>happy birthday danish 🤍</title>
 
 <style>
@@ -14,16 +15,48 @@
 
 body {
   font-family: Arial, sans-serif;
-  background: linear-gradient(135deg, #ffd6e7, #fff0f6);
+  background: linear-gradient(135deg, #ffd6e7, #fff5f9);
   min-height: 100vh;
   overflow: hidden;
-  color: #333;
+  color: #444;
+}
+
+/* floating background hearts */
+body::before,
+body::after {
+  content: "♡";
+  position: fixed;
+  font-size: 90px;
+  opacity: 0.08;
+  pointer-events: none;
+  animation: float 6s ease-in-out infinite;
+}
+
+body::before {
+  left: 7%;
+  top: 13%;
+}
+
+body::after {
+  right: 7%;
+  bottom: 13%;
+  animation-delay: 2s;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+
+  50% {
+    transform: translateY(-25px) rotate(10deg);
+  }
 }
 
 .slide {
   display: none;
   min-height: 100vh;
-  padding: 30px;
+  padding: 25px;
   align-items: center;
   justify-content: center;
   text-align: center;
@@ -35,52 +68,83 @@ body {
 }
 
 .box {
-  background: rgba(255,255,255,0.8);
-  padding: 35px 25px;
-  border-radius: 25px;
+  background: rgba(255,255,255,0.88);
+  padding: 32px 24px;
+  border-radius: 28px;
+  width: 92%;
   max-width: 500px;
-  width: 90%;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  box-shadow: 0 12px 35px rgba(0,0,0,0.08);
+  animation: popIn 0.6s ease;
+}
+
+@keyframes popIn {
+  from {
+    opacity: 0;
+    transform: scale(0.85) translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
 }
 
 h1 {
-  font-size: 32px;
+  font-size: 30px;
   margin-bottom: 18px;
 }
 
 p {
-  font-size: 17px;
+  font-size: 16px;
   line-height: 1.7;
-  margin-bottom: 20px;
+  margin-bottom: 18px;
 }
 
 button {
   border: none;
-  padding: 13px 25px;
-  border-radius: 30px;
+  padding: 13px 22px;
+  border-radius: 25px;
   background: #ff8fbd;
   color: white;
-  font-size: 16px;
+  font-size: 15px;
+  margin: 6px;
   cursor: pointer;
-  margin: 7px;
+  animation: buttonFloat 2.5s ease-in-out infinite;
+  transition: 0.2s;
 }
 
 button:hover {
-  transform: scale(1.05);
+  transform: scale(1.08);
+}
+
+@keyframes buttonFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+.game-btn {
+  display: block;
+  width: 85%;
+  margin: 10px auto;
 }
 
 input {
   padding: 13px;
-  border-radius: 20px;
+  width: 82%;
   border: 1px solid #ddd;
-  width: 80%;
+  border-radius: 22px;
   text-align: center;
   font-size: 16px;
   margin-bottom: 10px;
 }
 
 .heart {
-  font-size: 90px;
+  font-size: 85px;
   cursor: pointer;
   animation: beat 1s infinite;
 }
@@ -91,12 +155,105 @@ input {
   }
 }
 
+.hearts {
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  margin: 25px 0;
+}
+
+.game-heart {
+  font-size: 45px;
+  cursor: pointer;
+  transition: 0.2s;
+  animation: heartFloat 1.8s ease-in-out infinite;
+}
+
+.game-heart:nth-child(2) {
+  animation-delay: .3s;
+}
+
+.game-heart:nth-child(3) {
+  animation-delay: .6s;
+}
+
+.game-heart:hover {
+  transform: scale(1.3);
+}
+
+@keyframes heartFloat {
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+.boxes {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin: 25px 0;
+}
+
+.gift {
+  font-size: 55px;
+  cursor: pointer;
+  transition: .2s;
+  animation: giftFloat 2s ease-in-out infinite;
+}
+
+.gift:nth-child(2) {
+  animation-delay: .3s;
+}
+
+.gift:nth-child(3) {
+  animation-delay: .6s;
+}
+
+.gift:hover {
+  transform: scale(1.2) rotate(5deg);
+}
+
+@keyframes giftFloat {
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+/* floating hearts from bottom */
+.floating-heart {
+  position: fixed;
+  bottom: -30px;
+  font-size: 22px;
+  opacity: 0.7;
+  pointer-events: none;
+  animation: rise 5s linear forwards;
+  z-index: 5;
+}
+
+@keyframes rise {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 0;
+  }
+
+  20% {
+    opacity: 0.8;
+  }
+
+  100% {
+    transform: translateY(-110vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* confetti */
 .confetti {
   position: fixed;
-  top: -20px;
+  top: -30px;
   font-size: 20px;
-  animation: fall 3s linear forwards;
   pointer-events: none;
+  animation: fall 3s linear forwards;
+  z-index: 10;
 }
 
 @keyframes fall {
@@ -106,62 +263,143 @@ input {
 }
 
 .small {
-  font-size: 14px;
-  opacity: 0.7;
+  font-size: 13px;
+  opacity: .65;
+}
+
+#reaction,
+#choice,
+#heartReaction,
+#giftReaction {
+  min-height: 25px;
+  margin-top: 10px;
 }
 </style>
 </head>
 
 <body>
 
-<!-- SLIDE 1 -->
+<!-- slide 1 -->
 <section class="slide active" id="slide1">
   <div class="box">
     <h1>hi danish 🤍</h1>
-    <p>i have a little something for you hehe</p>
+    <p>i made a little something for you hehe</p>
     <button onclick="nextSlide()">start 🤍</button>
   </div>
 </section>
 
-<!-- SLIDE 2 -->
+<!-- slide 2 -->
 <section class="slide" id="slide2">
   <div class="box">
-    <h1>okay danish 😭</h1>
-    <p>before we continue...</p>
-    <p><b>who's having a birthday today? 👀</b></p>
+    <h1>game time 🎮</h1>
+    <p>first question...</p>
+    <p><b>who's birthday is it? 👀</b></p>
 
-    <button onclick="nextSlide()">me 😌</button>
-    <button onclick="nextSlide()">danish 🤍</button>
+    <button class="game-btn" onclick="wrongAnswer()">
+      mine 😌
+    </button>
+
+    <button class="game-btn" onclick="nextSlide()">
+      danish 🤍
+    </button>
+
+    <p id="reaction"></p>
   </div>
 </section>
 
-<!-- SLIDE 3 -->
+<!-- slide 3 -->
 <section class="slide" id="slide3">
   <div class="box">
-    <h1>hmm 👀</h1>
-    <p>enter the secret password</p>
+    <h1>choose one 👀</h1>
+    <p>okayyy, pick your favourite</p>
 
-    <input type="password" id="password" placeholder="password...">
-    <br>
+    <button onclick="choose('chocolate')">
+      🍫 chocolate
+    </button>
 
-    <button onclick="checkPassword()">unlock 🤍</button>
+    <button onclick="choose('ice cream')">
+      🍦 ice cream
+    </button>
 
-    <p id="wrong" class="small"></p>
+    <p id="choice"></p>
+
+    <button
+      id="choiceNext"
+      onclick="nextSlide()"
+      style="display:none;">
+      continue 🤍
+    </button>
   </div>
 </section>
 
-<!-- SLIDE 4 -->
+<!-- slide 4 -->
 <section class="slide" id="slide4">
   <div class="box">
-    <h1>one more thing...</h1>
-    <p>tap the heart 🤍</p>
+    <h1>heart challenge 💗</h1>
+    <p>only one heart lets you continue...</p>
 
-    <div class="heart" onclick="openHeart()">🤍</div>
+    <div class="hearts">
+      <span class="game-heart" onclick="wrongHeart()">💗</span>
+      <span class="game-heart" onclick="nextSlide()">🤍</span>
+      <span class="game-heart" onclick="wrongHeart()">💗</span>
+    </div>
+
+    <p id="heartReaction"></p>
   </div>
 </section>
 
-<!-- SLIDE 5 -->
+<!-- slide 5 -->
 <section class="slide" id="slide5">
+  <div class="box">
+    <h1>mystery boxes 🎁</h1>
+    <p>one of these has a surprise...</p>
+
+    <div class="boxes">
+      <span class="gift" onclick="wrongGift()">🎁</span>
+      <span class="gift" onclick="nextSlide()">🎁</span>
+      <span class="gift" onclick="wrongGift()">🎁</span>
+    </div>
+
+    <p id="giftReaction"></p>
+  </div>
+</section>
+
+<!-- slide 6 -->
+<section class="slide" id="slide6">
+  <div class="box">
+    <h1>one little secret 🔐</h1>
+    <p>enter the password to unlock the next part</p>
+
+    <input
+      type="password"
+      id="password"
+      placeholder="password..."
+    >
+
+    <br>
+
+    <button onclick="checkPassword()">
+      unlock 🤍
+    </button>
+
+    <p id="wrongPassword" class="small"></p>
+  </div>
+</section>
+
+<!-- slide 7 -->
+<section class="slide" id="slide7">
+  <div class="box">
+    <h1>you made it 😭🤍</h1>
+    <p>okayyy no more games for now...</p>
+
+    <div class="heart" onclick="openHeart()">🤍</div>
+
+    <p class="small">tap the heart</p>
+  </div>
+</section>
+
+<!-- slide 8 -->
+<section class="slide" id="slide8">
   <div class="box">
     <h1>happy birthdayyy 🥳🤍</h1>
 
@@ -172,46 +410,73 @@ input {
       jadi tahun yang lebih baik for you . enjoy your dayy! 🎂💗
     </p>
 
-    <button onclick="celebrate()">celebrate 🎉</button>
+    <button onclick="celebrate()">
+      celebrate 🎉
+    </button>
   </div>
 </section>
 
-<!-- SLIDE 6 -->
-<section class="slide" id="slide6">
+<!-- slide 9 -->
+<section class="slide" id="slide9">
   <div class="box">
-    <h1>a little song for you 🎧</h1>
+    <h1>this song reminded me of you 🎧</h1>
 
     <p>
-      maybe listen to this while reading the rest 🤍
+      so here's a little song for you 🤍
     </p>
 
-    <button onclick="playSong()">play song 🎶</button>
+    <button onclick="playSong()">
+      🎧 play soft spot
+    </button>
 
     <br>
 
-    <button onclick="nextSlide()">continue 🤍</button>
+    <button onclick="nextSlide()">
+      continue 🤍
+    </button>
   </div>
 </section>
 
-<!-- SLIDE 7 -->
-<section class="slide" id="slide7">
+<!-- slide 10 -->
+<section class="slide" id="slide10">
   <div class="box">
-    <h1>last surprise 🤍</h1>
+    <h1>one last thing... 🥹</h1>
 
     <p>
-      i hope you know that you deserve good things,
-      good people and lots of happiness .
+      i hope today makes you smile a little more .
     </p>
 
     <p>
-      take care of yourself always okayy 😭🤍
+      and i hope this year brings you lots of good things,
+      happiness and beautiful memories 🤍
+    </p>
+
+    <button onclick="nextSlide()">
+      there's more 👀
+    </button>
+  </div>
+</section>
+
+<!-- slide 11 -->
+<section class="slide" id="slide11">
+  <div class="box">
+    <h1>happy birthday, danish 🤍</h1>
+
+    <p>
+      thank you for being you .
     </p>
 
     <p>
-      happy birthday once again, danish 🎂💗
+      enjoy your special dayy 🎂💗
     </p>
 
-    <button onclick="location.reload()">replay ♡</button>
+    <p>
+      you deserve all the good things coming your way .
+    </p>
+
+    <button onclick="location.reload()">
+      replay ♡
+    </button>
   </div>
 </section>
 
@@ -219,64 +484,180 @@ input {
 
 let currentSlide = 1;
 
+/* floating hearts */
+setInterval(() => {
+
+  const heart = document.createElement("div");
+
+  heart.className = "floating-heart";
+
+  heart.innerText = [
+    "🤍",
+    "💗",
+    "♡",
+    "✨"
+  ][Math.floor(Math.random() * 4)];
+
+  heart.style.left =
+    Math.random() * 100 + "vw";
+
+  heart.style.animationDuration =
+    Math.random() * 3 + 4 + "s";
+
+  document.body.appendChild(heart);
+
+  setTimeout(() => {
+    heart.remove();
+  }, 7000);
+
+}, 900);
+
+
+/* slide system */
 function nextSlide() {
-  document.getElementById("slide" + currentSlide).classList.remove("active");
+
+  document
+    .getElementById("slide" + currentSlide)
+    .classList.remove("active");
 
   currentSlide++;
 
-  document.getElementById("slide" + currentSlide).classList.add("active");
+  document
+    .getElementById("slide" + currentSlide)
+    .classList.add("active");
 }
 
+
+/* game 1 */
+function wrongAnswer() {
+
+  document.getElementById("reaction").innerText =
+    "HAHAHA salah 😭 cuba lagi";
+
+}
+
+
+/* game 2 */
+function choose(answer) {
+
+  document.getElementById("choice").innerText =
+    "okayyy noted 😭🤍 " + answer + " it is";
+
+  document.getElementById("choiceNext").style.display =
+    "inline-block";
+
+}
+
+
+/* heart game */
+function wrongHeart() {
+
+  document.getElementById("heartReaction").innerText =
+    "bukan yang ni 😭 try another one";
+
+}
+
+
+/* mystery box */
+function wrongGift() {
+
+  document.getElementById("giftReaction").innerText =
+    "nopeee 😭 try another box";
+
+}
+
+
+/* password */
 function checkPassword() {
-  let password = document.getElementById("password").value;
-  let wrong = document.getElementById("wrong");
+
+  let password =
+    document.getElementById("password").value;
 
   if (password.toLowerCase() === "danish") {
+
     nextSlide();
+
   } else {
-    wrong.innerText = "wronggg 😭 try again";
+
+    document.getElementById("wrongPassword").innerText =
+      "wronggg 😭 try again";
+
   }
+
 }
 
+
+/* heart surprise */
 function openHeart() {
+
   createConfetti();
+
   nextSlide();
+
 }
 
-function createConfetti() {
-  const emojis = ["🤍", "💗", "🎉", "✨", "🥳", "💕"];
 
-  for (let i = 0; i < 50; i++) {
-    let confetti = document.createElement("div");
+/* birthday celebration */
+function celebrate() {
+
+  createConfetti();
+
+  nextSlide();
+
+}
+
+
+/* confetti */
+function createConfetti() {
+
+  const emojis = [
+    "🤍",
+    "💗",
+    "🎉",
+    "✨",
+    "🥳",
+    "💕"
+  ];
+
+  for (let i = 0; i < 60; i++) {
+
+    let confetti =
+      document.createElement("div");
 
     confetti.className = "confetti";
-    confetti.innerText =
-      emojis[Math.floor(Math.random() * emojis.length)];
 
-    confetti.style.left = Math.random() * 100 + "vw";
+    confetti.innerText =
+      emojis[
+        Math.floor(
+          Math.random() * emojis.length
+        )
+      ];
+
+    confetti.style.left =
+      Math.random() * 100 + "vw";
+
     confetti.style.animationDuration =
-      (Math.random() * 2 + 2) + "s";
+      Math.random() * 2 + 2 + "s";
 
     document.body.appendChild(confetti);
 
     setTimeout(() => {
       confetti.remove();
     }, 4000);
+
   }
+
 }
 
-function celebrate() {
-  createConfetti();
-  nextSlide();
-}
 
-functfunction playSong() {
+/* song */
+function playSong() {
+
   window.open(
-    "https://www.youtube.com/results?search_query=Tempo+Topia+You%27re+My+Sweetest",
+    "https://www.youtube.com/results?search_query=Soft+Spot+keshi",
     "_blank"
   );
-}
-  );
+
 }
 
 </script>
