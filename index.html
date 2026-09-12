@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>a little surprise for danish ♡</title>
+<style>
+*{box-sizing:border-box}
+body{
+ margin:0; min-height:100vh; overflow-x:hidden;
+ font-family:Georgia,"Times New Roman",serif;
+ color:#5d486b;
+ background:linear-gradient(145deg,#f4e9ff,#ead8fa 45%,#f9e9f4);
+}
+button{font:inherit}
+.wrap{min-height:100vh;display:flex;justify-content:center;align-items:center;padding:24px 15px}
+.card{
+ width:min(430px,100%); min-height:680px; position:relative; overflow:hidden;
+ padding:34px 22px 28px; text-align:center;
+ border:1px solid rgba(255,255,255,.8); border-radius:32px;
+ background:rgba(255,255,255,.42);
+ box-shadow:0 18px 60px rgba(104,73,130,.18);
+ backdrop-filter:blur(9px);
+}
+h1{font-size:18px;font-weight:normal;letter-spacing:2px;margin:3px 0 8px}
+.sub{font-size:13px;letter-spacing:1px;opacity:.75;margin-bottom:24px}
+.flower{font-size:48px;animation:float 3s ease-in-out infinite}
+@keyframes float{50%{transform:translateY(-7px) rotate(2deg)}}
+.envelope{
+ width:190px;height:130px;margin:32px auto 24px;position:relative;cursor:pointer;
+ border:0;background:#caa7df;border-radius:10px;box-shadow:0 12px 25px #9474aa33;
+ transition:.3s;
+}
+.envelope:hover{transform:translateY(-4px)}
+.envelope:before{
+ content:"";position:absolute;inset:0;
+ clip-path:polygon(0 0,50% 56%,100% 0,100% 100%,0 100%);
+ background:#b991d2;border-radius:10px;
+}
+.envelope:after{
+ content:"♡";position:absolute;left:50%;top:52%;transform:translate(-50%,-50%);
+ color:white;font-size:28px;
+}
+.tap{font-size:13px;opacity:.72}
+.letter{
+ display:none; animation:appear .7s ease both;
+ margin:18px auto 0; padding:24px 20px;
+ border-radius:22px; background:#fff9ffcc;
+ box-shadow:0 10px 30px #805d9620;
+ line-height:1.7; font-size:15px;
+}
+.letter.show{display:block}
+@keyframes appear{from{opacity:0;transform:translateY(18px) scale(.97)}to{opacity:1;transform:none}}
+.controls{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:20px}
+.btn{
+ border:0;border-radius:999px;padding:10px 15px;cursor:pointer;
+ background:#fff6ffcc;color:#6c527a;box-shadow:0 6px 18px #805d961c;
+ transition:.2s
+}
+.btn:active{transform:scale(.94)}
+.gift{
+ margin:25px auto 5px;width:72px;height:62px;position:relative;cursor:pointer;
+ animation:float 3.2s ease-in-out infinite;
+}
+.box{position:absolute;left:5px;bottom:0;width:62px;height:45px;background:#c9a2dc;border-radius:5px}
+.lid{position:absolute;left:1px;top:8px;width:70px;height:16px;background:#b78dce;border-radius:5px}
+.ribbon{position:absolute;left:31px;top:8px;width:10px;height:54px;background:#f1c7dd}
+.gift-msg{display:none;margin-top:8px;font-size:14px}
+.gift-msg.show{display:block;animation:appear .5s ease}
+.heart{
+ position:fixed;left:var(--x);top:var(--y);font-size:var(--s);
+ pointer-events:none;animation:rise 1.7s ease-out forwards;z-index:20
+}
+@keyframes rise{
+ 0%{opacity:1;transform:translate(-50%,0) scale(.7)}
+ 100%{opacity:0;transform:translate(calc(-50% + var(--dx)), -180px) rotate(25deg) scale(1.25)}
+}
+.sparkle{position:absolute;opacity:.55;animation:twinkle 2.2s infinite alternate}
+@keyframes twinkle{to{opacity:.15;transform:scale(.7) rotate(20deg)}}
+.note{font-size:11px;opacity:.55;margin-top:25px}
+</style>
+</head>
+<body>
+<div class="wrap">
+ <main class="card">
+  <div class="sparkle" style="left:12%;top:8%;font-size:22px">✦</div>
+  <div class="sparkle" style="right:12%;top:18%;font-size:18px">✧</div>
+  <div class="sparkle" style="left:8%;bottom:18%;font-size:18px">✧</div>
+  <div class="sparkle" style="right:10%;bottom:12%;font-size:24px">✦</div>
+
+  <div class="flower">🌷</div>
+  <h1>a little surprise for danish ♡</h1>
+  <div class="sub">tap the envelope...</div>
+
+  <button class="envelope" id="envelope" aria-label="open letter"></button>
+
+  <section class="letter" id="letter">
+   <div style="font-size:26px;margin-bottom:8px">♡</div>
+   happy birthdayyy 🥳🤍 hope you have a really good day today . semoga panjang umur , murah rezeki and everything goes well for you . I hope you get all the happiness you deserve , and semoga tahun ni jadi tahun yang lebih baik for you . enjoy your dayy! 🎂💗
+  </section>
+
+  <div class="controls">
+   <button class="btn" id="music">🎵 sweet</button>
+   <button class="btn" id="hearts">💗 tap me</button>
+   <button class="btn" id="again">💌 read again</button>
+  </div>
+
+  <div class="gift" id="gift" aria-label="open gift">
+   <div class="lid"></div><div class="box"></div><div class="ribbon"></div>
+  </div>
+  <div class="gift-msg" id="giftMsg">🎁 surpriseee! semoga hari you sweet macam lagu ni ♡</div>
+
+  <div class="note">music button opens “Sweet” by Daniel Caesar</div>
+ </main>
+</div>
+
+<script>
+const letter=document.getElementById('letter');
+document.getElementById('envelope').onclick=()=>letter.classList.add('show');
+document.getElementById('again').onclick=()=>{letter.classList.add('show'); letter.scrollIntoView({behavior:'smooth',block:'center'})};
+
+function hearts(n=16){
+ for(let i=0;i<n;i++){
+  const h=document.createElement('div'); h.className='heart';
+  h.textContent=['♡','♥','💗','💜'][Math.floor(Math.random()*4)];
+  h.style.setProperty('--x',(15+Math.random()*70)+'vw');
+  h.style.setProperty('--y',(55+Math.random()*25)+'vh');
+  h.style.setProperty('--s',(14+Math.random()*18)+'px');
+  h.style.setProperty('--dx',(-70+Math.random()*140)+'px');
+  document.body.appendChild(h);
+  setTimeout(()=>h.remove(),1800);
+ }
+}
+document.getElementById('hearts').onclick=()=>hearts(20);
+document.getElementById('gift').onclick=()=>{
+ document.getElementById('giftMsg').classList.toggle('show'); hearts(12);
+};
+
+document.getElementById('music').onclick=()=>{
+ window.open('https://www.youtube.com/results?search_query=Sweet+Daniel+Caesar','_blank');
+};
+</script>
+</body>
+</html>
