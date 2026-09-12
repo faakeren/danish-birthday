@@ -3,142 +3,281 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>a little surprise for danish ♡</title>
+<title>happy birthday danish 🤍</title>
+
 <style>
-*{box-sizing:border-box}
-body{
- margin:0; min-height:100vh; overflow-x:hidden;
- font-family:Georgia,"Times New Roman",serif;
- color:#5d486b;
- background:linear-gradient(145deg,#f4e9ff,#ead8fa 45%,#f9e9f4);
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
-button{font:inherit}
-.wrap{min-height:100vh;display:flex;justify-content:center;align-items:center;padding:24px 15px}
-.card{
- width:min(430px,100%); min-height:680px; position:relative; overflow:hidden;
- padding:34px 22px 28px; text-align:center;
- border:1px solid rgba(255,255,255,.8); border-radius:32px;
- background:rgba(255,255,255,.42);
- box-shadow:0 18px 60px rgba(104,73,130,.18);
- backdrop-filter:blur(9px);
+
+body {
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #ffd6e7, #fff0f6);
+  min-height: 100vh;
+  overflow: hidden;
+  color: #333;
 }
-h1{font-size:18px;font-weight:normal;letter-spacing:2px;margin:3px 0 8px}
-.sub{font-size:13px;letter-spacing:1px;opacity:.75;margin-bottom:24px}
-.flower{font-size:48px;animation:float 3s ease-in-out infinite}
-@keyframes float{50%{transform:translateY(-7px) rotate(2deg)}}
-.envelope{
- width:190px;height:130px;margin:32px auto 24px;position:relative;cursor:pointer;
- border:0;background:#caa7df;border-radius:10px;box-shadow:0 12px 25px #9474aa33;
- transition:.3s;
+
+.slide {
+  display: none;
+  min-height: 100vh;
+  padding: 30px;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  flex-direction: column;
 }
-.envelope:hover{transform:translateY(-4px)}
-.envelope:before{
- content:"";position:absolute;inset:0;
- clip-path:polygon(0 0,50% 56%,100% 0,100% 100%,0 100%);
- background:#b991d2;border-radius:10px;
+
+.slide.active {
+  display: flex;
 }
-.envelope:after{
- content:"♡";position:absolute;left:50%;top:52%;transform:translate(-50%,-50%);
- color:white;font-size:28px;
+
+.box {
+  background: rgba(255,255,255,0.8);
+  padding: 35px 25px;
+  border-radius: 25px;
+  max-width: 500px;
+  width: 90%;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
 }
-.tap{font-size:13px;opacity:.72}
-.letter{
- display:none; animation:appear .7s ease both;
- margin:18px auto 0; padding:24px 20px;
- border-radius:22px; background:#fff9ffcc;
- box-shadow:0 10px 30px #805d9620;
- line-height:1.7; font-size:15px;
+
+h1 {
+  font-size: 32px;
+  margin-bottom: 18px;
 }
-.letter.show{display:block}
-@keyframes appear{from{opacity:0;transform:translateY(18px) scale(.97)}to{opacity:1;transform:none}}
-.controls{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:20px}
-.btn{
- border:0;border-radius:999px;padding:10px 15px;cursor:pointer;
- background:#fff6ffcc;color:#6c527a;box-shadow:0 6px 18px #805d961c;
- transition:.2s
+
+p {
+  font-size: 17px;
+  line-height: 1.7;
+  margin-bottom: 20px;
 }
-.btn:active{transform:scale(.94)}
-.gift{
- margin:25px auto 5px;width:72px;height:62px;position:relative;cursor:pointer;
- animation:float 3.2s ease-in-out infinite;
+
+button {
+  border: none;
+  padding: 13px 25px;
+  border-radius: 30px;
+  background: #ff8fbd;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  margin: 7px;
 }
-.box{position:absolute;left:5px;bottom:0;width:62px;height:45px;background:#c9a2dc;border-radius:5px}
-.lid{position:absolute;left:1px;top:8px;width:70px;height:16px;background:#b78dce;border-radius:5px}
-.ribbon{position:absolute;left:31px;top:8px;width:10px;height:54px;background:#f1c7dd}
-.gift-msg{display:none;margin-top:8px;font-size:14px}
-.gift-msg.show{display:block;animation:appear .5s ease}
-.heart{
- position:fixed;left:var(--x);top:var(--y);font-size:var(--s);
- pointer-events:none;animation:rise 1.7s ease-out forwards;z-index:20
+
+button:hover {
+  transform: scale(1.05);
 }
-@keyframes rise{
- 0%{opacity:1;transform:translate(-50%,0) scale(.7)}
- 100%{opacity:0;transform:translate(calc(-50% + var(--dx)), -180px) rotate(25deg) scale(1.25)}
+
+input {
+  padding: 13px;
+  border-radius: 20px;
+  border: 1px solid #ddd;
+  width: 80%;
+  text-align: center;
+  font-size: 16px;
+  margin-bottom: 10px;
 }
-.sparkle{position:absolute;opacity:.55;animation:twinkle 2.2s infinite alternate}
-@keyframes twinkle{to{opacity:.15;transform:scale(.7) rotate(20deg)}}
-.note{font-size:11px;opacity:.55;margin-top:25px}
+
+.heart {
+  font-size: 90px;
+  cursor: pointer;
+  animation: beat 1s infinite;
+}
+
+@keyframes beat {
+  50% {
+    transform: scale(1.15);
+  }
+}
+
+.confetti {
+  position: fixed;
+  top: -20px;
+  font-size: 20px;
+  animation: fall 3s linear forwards;
+  pointer-events: none;
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(110vh) rotate(720deg);
+  }
+}
+
+.small {
+  font-size: 14px;
+  opacity: 0.7;
+}
 </style>
 </head>
+
 <body>
-<div class="wrap">
- <main class="card">
-  <div class="sparkle" style="left:12%;top:8%;font-size:22px">✦</div>
-  <div class="sparkle" style="right:12%;top:18%;font-size:18px">✧</div>
-  <div class="sparkle" style="left:8%;bottom:18%;font-size:18px">✧</div>
-  <div class="sparkle" style="right:10%;bottom:12%;font-size:24px">✦</div>
 
-  <div class="flower">🌷</div>
-  <h1>a little surprise for danish ♡</h1>
-  <div class="sub">tap the envelope...</div>
-
-  <button class="envelope" id="envelope" aria-label="open letter"></button>
-
-  <section class="letter" id="letter">
-   <div style="font-size:26px;margin-bottom:8px">♡</div>
-   happy birthdayyy 🥳🤍 hope you have a really good day today . semoga panjang umur , murah rezeki and everything goes well for you . I hope you get all the happiness you deserve , and semoga tahun ni jadi tahun yang lebih baik for you . enjoy your dayy! 🎂💗
-  </section>
-
-  <div class="controls">
-   <button class="btn" id="music">🎵 sweet</button>
-   <button class="btn" id="hearts">💗 tap me</button>
-   <button class="btn" id="again">💌 read again</button>
+<!-- SLIDE 1 -->
+<section class="slide active" id="slide1">
+  <div class="box">
+    <h1>hi danish 🤍</h1>
+    <p>i have a little something for you hehe</p>
+    <button onclick="nextSlide()">start 🤍</button>
   </div>
+</section>
 
-  <div class="gift" id="gift" aria-label="open gift">
-   <div class="lid"></div><div class="box"></div><div class="ribbon"></div>
+<!-- SLIDE 2 -->
+<section class="slide" id="slide2">
+  <div class="box">
+    <h1>okay danish 😭</h1>
+    <p>before we continue...</p>
+    <p><b>who's having a birthday today? 👀</b></p>
+
+    <button onclick="nextSlide()">me 😌</button>
+    <button onclick="nextSlide()">danish 🤍</button>
   </div>
-  <div class="gift-msg" id="giftMsg">🎁 surpriseee! semoga hari you sweet macam lagu ni ♡</div>
+</section>
 
-  <div class="note">music button opens “Sweet” by Daniel Caesar</div>
- </main>
-</div>
+<!-- SLIDE 3 -->
+<section class="slide" id="slide3">
+  <div class="box">
+    <h1>hmm 👀</h1>
+    <p>enter the secret password</p>
+
+    <input type="password" id="password" placeholder="password...">
+    <br>
+
+    <button onclick="checkPassword()">unlock 🤍</button>
+
+    <p id="wrong" class="small"></p>
+  </div>
+</section>
+
+<!-- SLIDE 4 -->
+<section class="slide" id="slide4">
+  <div class="box">
+    <h1>one more thing...</h1>
+    <p>tap the heart 🤍</p>
+
+    <div class="heart" onclick="openHeart()">🤍</div>
+  </div>
+</section>
+
+<!-- SLIDE 5 -->
+<section class="slide" id="slide5">
+  <div class="box">
+    <h1>happy birthdayyy 🥳🤍</h1>
+
+    <p>
+      happy birthdayyy 🥳🤍 hope you have a really good day today .
+      semoga panjang umur , murah rezeki and everything goes well for you .
+      i hope you get all the happiness you deserve , and semoga tahun ni
+      jadi tahun yang lebih baik for you . enjoy your dayy! 🎂💗
+    </p>
+
+    <button onclick="celebrate()">celebrate 🎉</button>
+  </div>
+</section>
+
+<!-- SLIDE 6 -->
+<section class="slide" id="slide6">
+  <div class="box">
+    <h1>a little song for you 🎧</h1>
+
+    <p>
+      maybe listen to this while reading the rest 🤍
+    </p>
+
+    <button onclick="playSong()">play song 🎶</button>
+
+    <br>
+
+    <button onclick="nextSlide()">continue 🤍</button>
+  </div>
+</section>
+
+<!-- SLIDE 7 -->
+<section class="slide" id="slide7">
+  <div class="box">
+    <h1>last surprise 🤍</h1>
+
+    <p>
+      i hope you know that you deserve good things,
+      good people and lots of happiness .
+    </p>
+
+    <p>
+      take care of yourself always okayy 😭🤍
+    </p>
+
+    <p>
+      happy birthday once again, danish 🎂💗
+    </p>
+
+    <button onclick="location.reload()">replay ♡</button>
+  </div>
+</section>
 
 <script>
-const letter=document.getElementById('letter');
-document.getElementById('envelope').onclick=()=>letter.classList.add('show');
-document.getElementById('again').onclick=()=>{letter.classList.add('show'); letter.scrollIntoView({behavior:'smooth',block:'center'})};
 
-function hearts(n=16){
- for(let i=0;i<n;i++){
-  const h=document.createElement('div'); h.className='heart';
-  h.textContent=['♡','♥','💗','💜'][Math.floor(Math.random()*4)];
-  h.style.setProperty('--x',(15+Math.random()*70)+'vw');
-  h.style.setProperty('--y',(55+Math.random()*25)+'vh');
-  h.style.setProperty('--s',(14+Math.random()*18)+'px');
-  h.style.setProperty('--dx',(-70+Math.random()*140)+'px');
-  document.body.appendChild(h);
-  setTimeout(()=>h.remove(),1800);
- }
+let currentSlide = 1;
+
+function nextSlide() {
+  document.getElementById("slide" + currentSlide).classList.remove("active");
+
+  currentSlide++;
+
+  document.getElementById("slide" + currentSlide).classList.add("active");
 }
-document.getElementById('hearts').onclick=()=>hearts(20);
-document.getElementById('gift').onclick=()=>{
- document.getElementById('giftMsg').classList.toggle('show'); hearts(12);
-};
 
-document.getElementById('music').onclick=()=>{
- window.open('https://www.youtube.com/results?search_query=Sweet+Daniel+Caesar','_blank');
-};
+function checkPassword() {
+  let password = document.getElementById("password").value;
+  let wrong = document.getElementById("wrong");
+
+  if (password.toLowerCase() === "danish") {
+    nextSlide();
+  } else {
+    wrong.innerText = "wronggg 😭 try again";
+  }
+}
+
+function openHeart() {
+  createConfetti();
+  nextSlide();
+}
+
+function createConfetti() {
+  const emojis = ["🤍", "💗", "🎉", "✨", "🥳", "💕"];
+
+  for (let i = 0; i < 50; i++) {
+    let confetti = document.createElement("div");
+
+    confetti.className = "confetti";
+    confetti.innerText =
+      emojis[Math.floor(Math.random() * emojis.length)];
+
+    confetti.style.left = Math.random() * 100 + "vw";
+    confetti.style.animationDuration =
+      (Math.random() * 2 + 2) + "s";
+
+    document.body.appendChild(confetti);
+
+    setTimeout(() => {
+      confetti.remove();
+    }, 4000);
+  }
+}
+
+function celebrate() {
+  createConfetti();
+  nextSlide();
+}
+
+function playSong() {
+  window.open(
+    "https://www.youtube.com/results?search_query=Frank+Ocean+Pink+Matter",
+    "_blank"
+  );
+}
+
 </script>
+
 </body>
-</html>
+</html>>
