@@ -6,1517 +6,1183 @@
 <title>For Danish 🕷️</title>
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Bangers&family=Poppins:wght@400;500;600;700;800&display=swap');
+
 *{
   box-sizing:border-box;
   margin:0;
   padding:0;
 }
 
-html,body{
-  width:100%;
-  height:100%;
-}
-
 body{
-  overflow:hidden;
-  font-family:Georgia,"Times New Roman",serif;
-  background:#08090d;
+  background:#050509;
   color:white;
+  font-family:Poppins,sans-serif;
+  overflow:hidden;
 }
-
-/* =========================
-   GENERAL
-========================= */
 
 .screen{
   position:absolute;
   inset:0;
+  min-height:100vh;
   display:none;
-  align-items:center;
   justify-content:center;
-  text-align:center;
+  align-items:center;
   padding:25px;
   overflow:hidden;
 }
 
 .screen.active{
   display:flex;
-  animation:screenIn .8s ease;
+  animation:enter .65s ease;
 }
 
-@keyframes screenIn{
-  from{
-    opacity:0;
-    transform:scale(1.04);
-  }
-  to{
-    opacity:1;
-    transform:scale(1);
-  }
+@keyframes enter{
+  from{opacity:0;transform:scale(1.06)}
+  to{opacity:1;transform:scale(1)}
 }
 
-.content{
-  width:100%;
-  max-width:430px;
-  position:relative;
-  z-index:5;
+.bg{
+  position:absolute;
+  inset:0;
+  background:
+    radial-gradient(circle at 20% 20%,#67101a 0 2px,transparent 3px),
+    radial-gradient(circle at 80% 70%,#12265c 0 2px,transparent 3px),
+    linear-gradient(135deg,#050509,#12060b 50%,#050814);
+  background-size:90px 90px,120px 120px,100% 100%;
 }
-
-h1{
-  font-size:44px;
-  line-height:1.1;
-  margin-bottom:18px;
-}
-
-h2{
-  font-size:31px;
-  margin-bottom:15px;
-}
-
-p{
-  line-height:1.7;
-}
-
-.sub{
-  opacity:.78;
-  font-size:15px;
-}
-
-.btn{
-  margin-top:25px;
-  padding:14px 28px;
-  border-radius:30px;
-  border:1px solid rgba(255,255,255,.35);
-  background:#d71920;
-  color:white;
-  font-size:15px;
-  font-family:inherit;
-  box-shadow:0 8px 25px rgba(215,25,32,.3);
-  transition:.25s;
-}
-
-.btn:hover{
-  transform:translateY(-3px) scale(1.03);
-}
-
-.btn:active{
-  transform:scale(.95);
-}
-
-/* =========================
-   SPIDER WEB BACKGROUND
-========================= */
 
 .web{
   position:absolute;
-  width:520px;
-  height:520px;
-  border-radius:50%;
-  opacity:.15;
+  inset:-30%;
+  opacity:.13;
+  background:
+    repeating-radial-gradient(circle at center,
+    transparent 0 65px,
+    white 66px 68px);
+  transform:rotate(12deg);
   pointer-events:none;
 }
 
-.web:before,
-.web:after{
-  content:"";
-  position:absolute;
-  inset:0;
-  border-radius:50%;
-  border:1px solid #fff;
+.red{
+  color:#ff2038;
 }
 
-.web:before{
-  box-shadow:
-    0 0 0 45px transparent,
-    0 0 0 46px rgba(255,255,255,.8),
-    0 0 0 90px transparent,
-    0 0 0 91px rgba(255,255,255,.7),
-    0 0 0 135px transparent,
-    0 0 0 136px rgba(255,255,255,.6),
-    0 0 0 180px transparent,
-    0 0 0 181px rgba(255,255,255,.5),
-    0 0 0 225px transparent,
-    0 0 0 226px rgba(255,255,255,.4);
+.blue{
+  color:#5aa9ff;
 }
 
-.web:after{
-  border:none;
-  background:
-    linear-gradient(0deg,transparent 49.5%,rgba(255,255,255,.7) 50%,transparent 50.5%),
-    linear-gradient(45deg,transparent 49.5%,rgba(255,255,255,.7) 50%,transparent 50.5%),
-    linear-gradient(90deg,transparent 49.5%,rgba(255,255,255,.7) 50%,transparent 50.5%),
-    linear-gradient(135deg,transparent 49.5%,rgba(255,255,255,.7) 50%,transparent 50.5%);
+h1,h2,h3,.comic{
+  font-family:Bangers,cursive;
+  letter-spacing:2px;
 }
 
-.web.one{
-  left:-230px;
-  top:-180px;
+button{
+  border:0;
+  cursor:pointer;
+  font-family:Poppins,sans-serif;
 }
 
-.web.two{
-  right:-250px;
-  bottom:-210px;
-  transform:rotate(20deg);
-}
-
-.web.three{
-  width:300px;
-  height:300px;
-  right:-100px;
-  top:-100px;
-  opacity:.1;
-}
-
-/* =========================
-   FLOATING HEARTS
-========================= */
-
-.heart{
-  position:absolute;
-  color:#e51b23;
-  font-size:20px;
-  animation:floatHeart 4s ease-in-out infinite;
-  opacity:.65;
-}
-
-.h1{left:12%;top:20%}
-.h2{right:15%;top:30%;animation-delay:1s}
-.h3{left:20%;bottom:20%;animation-delay:2s}
-.h4{right:20%;bottom:15%;animation-delay:3s}
-
-@keyframes floatHeart{
-  0%,100%{
-    transform:translateY(0) rotate(-10deg);
-  }
-  50%{
-    transform:translateY(-18px) rotate(10deg);
-  }
-}
-
-/* =========================
-   INTRO
-========================= */
+/* INTRO */
 
 .intro{
-  background:
-    radial-gradient(circle at center,#351015 0%,#11090d 55%,#050609 100%);
+  text-align:center;
+  z-index:2;
 }
 
 .spider{
-  font-size:100px;
-  margin-bottom:20px;
-  animation:spiderFloat 2s ease-in-out infinite;
-  filter:drop-shadow(0 0 20px rgba(215,25,32,.4));
-}
-
-@keyframes spiderFloat{
-  0%,100%{transform:translateY(0)}
-  50%{transform:translateY(-12px)}
-}
-
-.redline{
-  width:90px;
-  height:3px;
-  background:#d71920;
-  margin:15px auto 20px;
-  box-shadow:0 0 15px #d71920;
-}
-
-/* =========================
-   PASSWORD
-========================= */
-
-.password{
-  background:
-    radial-gradient(circle at center,#250c12,#08090d 65%);
-}
-
-.password-card{
-  padding:25px 20px;
-  border-radius:25px;
-  background:rgba(255,255,255,.055);
-  border:1px solid rgba(215,25,32,.4);
-  box-shadow:0 20px 50px rgba(0,0,0,.5);
-}
-
-.dots{
-  display:flex;
-  justify-content:center;
-  gap:13px;
-  margin:20px 0 25px;
-}
-
-.dot{
-  width:14px;
-  height:14px;
-  border-radius:50%;
-  border:1px solid white;
-}
-
-.dot.on{
-  background:#d71920;
-  border-color:#d71920;
-  box-shadow:0 0 10px #d71920;
-}
-
-.keypad{
-  max-width:280px;
+  width:135px;
+  height:135px;
   margin:auto;
+  border:5px solid #fff;
+  border-radius:50%;
+  background:#d71930;
+  position:relative;
+  box-shadow:0 0 35px #e11;
+  animation:pulse 2s infinite;
+}
+
+.spider:before{
+  content:"";
+  position:absolute;
+  width:30px;
+  height:55px;
+  background:#050509;
+  border-radius:50%;
+  top:37px;
+  left:47px;
+}
+
+.eye{
+  position:absolute;
+  width:20px;
+  height:34px;
+  background:white;
+  border:3px solid #111;
+  transform:skew(-12deg);
+  top:27px;
+}
+
+.eye.one{left:27px}
+.eye.two{right:27px}
+
+@keyframes pulse{
+  50%{transform:scale(1.08)}
+}
+
+.intro h1{
+  font-size:55px;
+  margin-top:25px;
+}
+
+.intro p{
+  margin-top:5px;
+  opacity:.7;
+}
+
+.start{
+  margin-top:28px;
+  background:#e51b2d;
+  color:white;
+  padding:15px 30px;
+  border:3px solid white;
+  transform:skew(-5deg);
+  font-weight:800;
+  box-shadow:7px 7px 0 #fff;
+}
+
+.start:active{
+  transform:translate(5px,5px);
+  box-shadow:2px 2px 0 #fff;
+}
+
+/* MISSION */
+
+.panel{
+  width:min(440px,94vw);
+  position:relative;
+  z-index:2;
+  background:#101017;
+  border:4px solid white;
+  padding:30px 22px;
+  box-shadow:12px 12px 0 #d71930;
+  transform:rotate(-1deg);
+}
+
+.panel h2{
+  font-size:38px;
+  color:#ff263b;
+}
+
+.panel .small{
+  color:#aaa;
+  font-size:12px;
+  margin:5px 0 25px;
+}
+
+.code{
   display:grid;
   grid-template-columns:repeat(3,1fr);
-  gap:12px;
+  gap:10px;
 }
 
 .key{
-  aspect-ratio:1;
-  border-radius:50%;
-  border:1px solid rgba(255,255,255,.18);
-  background:#14151a;
+  height:60px;
+  background:#191922;
   color:white;
+  border:2px solid #555;
   font-size:20px;
+  font-weight:700;
 }
 
 .key:active{
-  background:#d71920;
-  transform:scale(.9);
+  background:#e21d31;
 }
 
-.error{
-  color:#ff858b;
-  min-height:24px;
+.display{
+  height:60px;
+  border:3px solid white;
+  margin-bottom:15px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-size:28px;
+  letter-spacing:10px;
+  color:#ff3447;
+}
+
+.hint{
   margin-top:15px;
+  font-size:12px;
+  color:#777;
+  text-align:center;
 }
 
-/* =========================
-   GIFT
-========================= */
+/* COMIC */
 
-.gift-screen{
-  background:
-    radial-gradient(circle at center,#300b11,#090a0e 70%);
+.comic-wrap{
+  width:min(440px,94vw);
+  position:relative;
+  z-index:2;
 }
+
+.comic-title{
+  font-size:48px;
+  color:#fff;
+  text-shadow:4px 4px #e31b2d;
+  margin-bottom:20px;
+}
+
+.comic-box{
+  background:#f4f0df;
+  color:#101010;
+  border:5px solid #111;
+  padding:25px;
+  box-shadow:10px 10px 0 #e21d31;
+  transform:rotate(1deg);
+  position:relative;
+}
+
+.comic-box:after{
+  content:"POW!";
+  position:absolute;
+  right:-15px;
+  top:-28px;
+  background:#ffe500;
+  border:4px solid #111;
+  padding:10px;
+  font-family:Bangers;
+  font-size:28px;
+  transform:rotate(12deg);
+}
+
+.comic-box h3{
+  font-size:38px;
+}
+
+.comic-box p{
+  color:#333;
+  line-height:1.7;
+  margin-top:10px;
+}
+
+.next{
+  margin-top:25px;
+  background:#111;
+  color:white;
+  padding:13px 25px;
+  border:3px solid white;
+  font-weight:800;
+}
+
+/* GIFT */
 
 .gift{
-  font-size:125px;
-  animation:giftBounce 1.6s infinite;
+  text-align:center;
+  z-index:2;
 }
 
-@keyframes giftBounce{
-  0%,100%{transform:translateY(0)}
-  50%{transform:translateY(-15px)}
+.gift h2{
+  font-size:45px;
 }
 
-.gift.open{
-  animation:giftOpen .7s forwards;
+.box{
+  width:170px;
+  height:130px;
+  margin:40px auto 25px;
+  background:#d71930;
+  border:5px solid white;
+  position:relative;
+  box-shadow:10px 10px 0 #111;
+  cursor:pointer;
 }
 
-@keyframes giftOpen{
-  50%{transform:scale(1.2) rotate(5deg)}
-  100%{transform:scale(.1);opacity:0}
+.box:before{
+  content:"";
+  position:absolute;
+  width:28px;
+  height:100%;
+  background:#ffe5e5;
+  left:66px;
 }
 
-/* =========================
-   CAKE
-========================= */
+.box:after{
+  content:"";
+  position:absolute;
+  width:100%;
+  height:25px;
+  background:#ffe5e5;
+  top:45px;
+  left:0;
+}
 
-.cake-screen{
-  background:
-    radial-gradient(circle at center,#3b0d14,#08090d 70%);
+.box.open{
+  animation:openbox .7s forwards;
+}
+
+@keyframes openbox{
+  50%{transform:translateY(-30px) rotate(-4deg)}
+  100%{transform:scale(.2);opacity:0}
+}
+
+.tap{
+  color:#aaa;
+  font-size:13px;
+}
+
+/* CAKE */
+
+.cake-area{
+  z-index:2;
+  text-align:center;
+}
+
+.cake-area h2{
+  font-size:48px;
 }
 
 .cake{
-  font-size:115px;
-  margin-bottom:15px;
+  width:230px;
+  height:125px;
+  background:#ffcfb7;
+  border:5px solid #111;
+  margin:70px auto 25px;
+  position:relative;
+  border-radius:10px;
+  box-shadow:0 12px 0 #8c2130;
 }
 
-.candles{
-  font-size:28px;
-  margin-bottom:-25px;
-  position:relative;
-  z-index:2;
+.cake:before{
+  content:"";
+  position:absolute;
+  width:100%;
+  height:35px;
+  background:#fff;
+  top:-8px;
+  left:0;
+  border-bottom:5px solid #111;
+}
+
+.candle{
+  width:13px;
+  height:55px;
+  background:#4b87e8;
+  border:3px solid #111;
+  position:absolute;
+  top:-60px;
+  left:108px;
 }
 
 .flame{
-  animation:flicker .35s infinite alternate;
-}
-
-@keyframes flicker{
-  from{opacity:.7}
-  to{opacity:1;transform:scale(1.1)}
+  width:18px;
+  height:25px;
+  background:#ffe600;
+  border:3px solid #111;
+  border-radius:50% 50% 50% 0;
+  transform:rotate(-45deg);
+  position:absolute;
+  top:-31px;
+  left:-5px;
 }
 
 .blown .flame{
-  opacity:0;
-  animation:none;
+  display:none;
 }
 
-/* =========================
-   LETTER
-========================= */
+.cake-msg{
+  opacity:0;
+  transform:translateY(10px);
+  transition:.5s;
+}
 
-.letter-screen{
-  background:
-    radial-gradient(circle at center,#220b10,#07080b 75%);
+.blown .cake-msg{
+  opacity:1;
+  transform:none;
+}
+
+/* LETTER */
+
+.letter-scene{
+  z-index:2;
+  width:min(450px,94vw);
+  text-align:center;
 }
 
 .envelope{
-  width:320px;
-  height:210px;
-  margin:auto;
+  width:340px;
+  max-width:90vw;
+  height:230px;
+  background:#e8d6bb;
+  border:5px solid #111;
+  margin:25px auto;
   position:relative;
   cursor:pointer;
-  perspective:800px;
-}
-
-.env-body{
-  position:absolute;
-  inset:0;
-  background:#d71920;
-  border-radius:8px;
-  box-shadow:0 20px 40px rgba(0,0,0,.5);
-}
-
-.env-flap{
-  position:absolute;
-  top:0;
-  left:0;
-  width:0;
-  height:0;
-  border-left:160px solid transparent;
-  border-right:160px solid transparent;
-  border-top:120px solid #a50f16;
-  transform-origin:top;
-  transition:.8s;
-  z-index:4;
-}
-
-.envelope.open .env-flap{
-  transform:rotateX(180deg);
-}
-
-.letter-paper{
-  position:absolute;
-  width:280px;
-  height:190px;
-  left:20px;
-  top:10px;
-  background:#fff7ee;
-  color:#35131b;
-  border-radius:5px;
-  padding:22px;
-  transition:.8s;
-  z-index:2;
   overflow:hidden;
 }
 
-.envelope.open .letter-paper{
+.envelope:before{
+  content:"";
+  position:absolute;
+  left:0;
+  top:0;
+  border-left:165px solid transparent;
+  border-right:165px solid transparent;
+  border-top:125px solid #c9ae8b;
+  z-index:3;
+}
+
+.paper{
+  position:absolute;
+  background:white;
+  color:#222;
+  width:90%;
+  left:5%;
+  height:185px;
+  top:35px;
+  padding:18px;
+  text-align:left;
+  transition:.8s;
+  z-index:2;
+  overflow:auto;
+}
+
+.envelope.open .paper{
   transform:translateY(-115px);
 }
 
-.letter-paper h3{
-  margin-bottom:12px;
-  font-size:22px;
+.envelope.open:before{
+  z-index:1;
 }
 
-.letter-paper p{
-  font-size:12px;
-  line-height:1.55;
+.letter-title{
+  font-family:Bangers;
+  font-size:30px;
+  color:#c91d30;
+  margin-bottom:8px;
 }
 
-.open-hint{
-  margin-top:45px;
-  opacity:.7;
+.paper p{
+  font-size:13px;
+  line-height:1.65;
 }
 
-/* =========================
-   BOUQUET
-========================= */
-
-.bouquet-screen{
-  background:
-    radial-gradient(circle at center,#280b11,#07080b 75%);
-}
+/* BOUQUET */
 
 .bouquet{
-  font-size:90px;
-  margin:15px 0;
-  animation:bouquetFloat 2s ease-in-out infinite;
+  text-align:center;
+  z-index:2;
 }
 
-@keyframes bouquetFloat{
-  0%,100%{transform:translateY(0)}
-  50%{transform:translateY(-8px)}
+.bouquet h2{
+  font-size:47px;
 }
 
-.flower-grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:12px;
-  margin-top:25px;
+.flowers{
+  width:280px;
+  height:300px;
+  margin:20px auto;
+  position:relative;
 }
 
 .flower{
-  background:#121319;
-  color:white;
-  border:1px solid rgba(215,25,32,.35);
-  border-radius:18px;
-  padding:15px 7px;
-  transition:.25s;
+  position:absolute;
+  font-size:55px;
+  animation:float 2s infinite ease-in-out;
+  cursor:pointer;
 }
 
-.flower:active{
-  transform:scale(.92);
+.flower:nth-child(1){left:15px;top:80px}
+.flower:nth-child(2){left:105px;top:25px;animation-delay:.3s}
+.flower:nth-child(3){right:10px;top:80px;animation-delay:.5s}
+.flower:nth-child(4){left:65px;top:145px;animation-delay:.7s}
+.flower:nth-child(5){right:55px;top:155px;animation-delay:.9s}
+
+@keyframes float{
+  50%{transform:translateY(-12px) rotate(5deg)}
 }
 
-.flower-icon{
-  font-size:40px;
-  margin-bottom:5px;
+.flower-msg{
+  min-height:45px;
+  color:#ddd;
+  font-size:14px;
 }
 
-.flower small{
-  opacity:.7;
-}
-
-/* =========================
-   STORY
-========================= */
-
-.story-screen{
-  background:
-    linear-gradient(180deg,#08090d,#210910,#08090d);
-}
+/* STORY */
 
 .story{
-  margin-top:25px;
-  text-align:left;
+  z-index:2;
+  width:min(440px,94vw);
 }
 
-.story-card{
-  background:rgba(255,255,255,.055);
-  border-left:3px solid #d71920;
-  border-radius:0 16px 16px 0;
-  padding:18px;
-  margin-bottom:14px;
-  opacity:0;
-  transform:translateX(-25px);
-  transition:.6s;
+.story h2{
+  font-size:48px;
+  margin-bottom:18px;
 }
 
-.story-card.show{
-  opacity:1;
-  transform:translateX(0);
+.card{
+  display:none;
+  background:white;
+  color:#111;
+  border:5px solid #111;
+  padding:25px;
+  min-height:220px;
+  box-shadow:9px 9px 0 #e21d31;
+  transform:rotate(-1deg);
 }
 
-.story-card h3{
-  color:#ff555c;
-  margin-bottom:6px;
+.card.show{
+  display:block;
+  animation:cardin .5s ease;
 }
 
-.story-card p{
-  font-size:13px;
-  opacity:.75;
+@keyframes cardin{
+  from{transform:translateX(100px) rotate(4deg);opacity:0}
+  to{transform:translateX(0) rotate(-1deg);opacity:1}
 }
 
-/* =========================
-   MUSIC
-========================= */
-
-.music-screen{
-  background:
-    radial-gradient(circle at center,#2a0b11,#07080b 75%);
+.card h3{
+  font-size:35px;
+  color:#d71930;
 }
 
-.music-card{
-  padding:28px 20px;
-  background:rgba(255,255,255,.055);
-  border:1px solid rgba(215,25,32,.4);
-  border-radius:25px;
+.card p{
+  margin-top:15px;
+  line-height:1.7;
+  color:#333;
 }
 
-.disc{
-  width:115px;
-  height:115px;
+.story-btn{
+  margin-top:20px;
+  padding:12px 25px;
+  background:#e21d31;
+  color:white;
+  border:3px solid white;
+  font-weight:800;
+}
+
+/* MUSIC */
+
+.music{
+  z-index:2;
+  text-align:center;
+}
+
+.vinyl{
+  width:220px;
+  height:220px;
   border-radius:50%;
-  margin:0 auto 22px;
+  margin:25px auto;
   background:
-    repeating-radial-gradient(circle,#090909 0,#090909 7px,#242424 8px,#090909 12px);
-  border:7px solid #111;
+    repeating-radial-gradient(circle,#080808 0 4px,#222 5px 7px);
+  border:8px solid #111;
+  box-shadow:0 0 30px #d71930;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  animation:spin 4s linear infinite;
+  animation-play-state:paused;
+}
+
+.vinyl.playing{
+  animation-play-state:running;
+}
+
+.vinyl:after{
+  content:"🕷️";
+  width:60px;
+  height:60px;
+  background:#e21d31;
+  border-radius:50%;
   display:flex;
   align-items:center;
   justify-content:center;
-  font-size:35px;
-}
-
-.disc.playing{
-  animation:spin 3s linear infinite;
+  font-size:30px;
 }
 
 @keyframes spin{
   to{transform:rotate(360deg)}
 }
 
-.music-button{
-  margin-top:22px;
-  padding:13px 28px;
-  border-radius:30px;
-  background:#d71920;
-  color:white;
-  border:none;
+.music h2{
+  font-size:46px;
 }
 
-/* =========================
-   GRATITUDE
-========================= */
-
-.gratitude-screen{
-  background:
-    radial-gradient(circle at center,#300c12,#07080b 75%);
+.music p{
+  color:#aaa;
 }
 
-.jar{
-  font-size:100px;
-  margin-bottom:10px;
+.play{
+  background:#fff;
+  color:#111;
+  padding:14px 30px;
+  font-weight:800;
+  border:4px solid #e21d31;
+  margin-top:15px;
+}
+
+/* GRATITUDE */
+
+.notes{
+  z-index:2;
+  width:min(440px,94vw);
+  text-align:center;
+}
+
+.notes h2{
+  font-size:43px;
 }
 
 .note{
-  background:#fff7ee;
-  color:#35131b;
-  border-radius:15px;
-  padding:22px;
-  min-height:100px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  margin:20px auto;
-  max-width:330px;
-  line-height:1.6;
-  animation:noteIn .5s ease;
-}
-
-@keyframes noteIn{
-  from{
-    opacity:0;
-    transform:scale(.8) rotate(-3deg);
-  }
-  to{
-    opacity:1;
-    transform:scale(1) rotate(0);
-  }
-}
-
-/* =========================
-   FINAL
-========================= */
-
-.final-screen{
-  background:
-    radial-gradient(circle at center,#430c14 0%,#15080c 45%,#050609 100%);
-}
-
-.final-spider{
-  font-size:105px;
-  animation:finalFloat 2s ease-in-out infinite;
-}
-
-@keyframes finalFloat{
-  0%,100%{transform:translateY(0)}
-  50%{transform:translateY(-12px)}
-}
-
-.final-title{
-  color:#fff;
-  text-shadow:
-    0 0 8px #d71920,
-    0 0 25px rgba(215,25,32,.5);
-}
-
-.confetti{
-  position:fixed;
-  top:-30px;
-  z-index:50;
-  pointer-events:none;
-  animation:fall 4s linear forwards;
-}
-
-@keyframes fall{
-  to{
-    transform:translateY(110vh) rotate(720deg);
-    opacity:0;
-  }
-}
-
-/* =========================
-   POPUP
-========================= */
-
-.popup{
-  position:fixed;
-  z-index:100;
-  left:50%;
-  top:50%;
-  transform:translate(-50%,-50%);
-  width:82%;
-  max-width:340px;
-  background:#fff7ee;
-  color:#35131b;
-  padding:25px;
-  border-radius:20px;
-  box-shadow:0 25px 70px rgba(0,0,0,.7);
+  background:#ffe7e7;
+  color:#222;
+  margin:13px 0;
+  padding:17px;
+  border:4px solid #111;
+  transform:rotate(-1deg);
   display:none;
 }
 
-.popup.show{
+.note.show{
   display:block;
-  animation:popupIn .3s ease;
+  animation:pop .4s ease;
 }
 
-@keyframes popupIn{
-  from{
-    opacity:0;
-    transform:translate(-50%,-50%) scale(.8);
-  }
-  to{
-    opacity:1;
-    transform:translate(-50%,-50%) scale(1);
-  }
+@keyframes pop{
+  from{transform:scale(.7) rotate(5deg);opacity:0}
+  to{transform:scale(1) rotate(-1deg);opacity:1}
 }
 
-.popup button{
-  margin-top:18px;
-  padding:10px 22px;
-  border:none;
-  border-radius:20px;
-  background:#d71920;
-  color:white;
+/* FINAL */
+
+.final{
+  text-align:center;
+  z-index:2;
 }
 
-/* =========================
-   MOBILE
-========================= */
+.final h1{
+  font-size:65px;
+  color:#ff2338;
+  text-shadow:4px 4px white;
+}
 
-@media(max-width:360px){
+.final h2{
+  font-size:50px;
+  margin:5px 0 20px;
+}
 
-  h1{
-    font-size:35px;
-  }
+.final p{
+  color:#ccc;
+  max-width:370px;
+  line-height:1.7;
+}
 
-  h2{
-    font-size:26px;
-  }
+.confetti{
+  position:absolute;
+  width:8px;
+  height:18px;
+  background:#fff;
+  top:-30px;
+  animation:fall 4s linear infinite;
+}
 
-  .envelope{
-    width:285px;
-    height:190px;
-  }
+@keyframes fall{
+  to{transform:translateY(110vh) rotate(720deg)}
+}
 
-  .env-flap{
-    border-left-width:142px;
-    border-right-width:142px;
-    border-top-width:105px;
-  }
+/* WEB SHOOT */
 
-  .letter-paper{
-    width:250px;
-    height:170px;
-    left:17px;
-  }
+.shoot{
+  position:absolute;
+  width:180px;
+  height:3px;
+  background:white;
+  left:-200px;
+  top:35%;
+  transform:rotate(-15deg);
+  animation:shoot 1.5s ease-out forwards;
+  opacity:.8;
+}
 
+@keyframes shoot{
+  to{left:110%}
+}
+
+@media(max-height:650px){
+  .intro h1,.comic-title{font-size:40px}
+  .panel{padding:20px}
+  .cake{margin-top:45px}
 }
 </style>
 </head>
 
 <body>
 
+<!-- 1 INTRO -->
+<section class="screen active" id="s1">
+  <div class="bg"></div>
+  <div class="web"></div>
+  <div class="shoot"></div>
 
-<!-- DECORATION -->
+  <div class="intro">
+    <div class="spider">
+      <div class="eye one"></div>
+      <div class="eye two"></div>
+    </div>
 
-<div class="web one"></div>
-<div class="web two"></div>
-<div class="web three"></div>
+    <h1>HEY <span class="red">DANISH</span> 🕷️</h1>
+    <p>you've received a secret birthday mission.</p>
 
-<div class="heart h1">♥</div>
-<div class="heart h2">♥</div>
-<div class="heart h3">♥</div>
-<div class="heart h4">♥</div>
-
-
-<!-- =========================
-     1. INTRO
-========================= -->
-
-<section class="screen active intro" id="screen1">
-
-  <div class="content">
-
-    <div class="spider">🕷️</div>
-
-    <div class="redline"></div>
-
-    <h1>For Danish ♡</h1>
-
-    <p class="sub">
-      I made a little something for you.
-    </p>
-
-    <button class="btn" onclick="goTo(2)">
-      TAP TO START 🕸️
+    <button class="start" onclick="go(2)">
+      ACCEPT MISSION →
     </button>
-
   </div>
-
 </section>
 
 
-<!-- =========================
-     2. PASSWORD
-========================= -->
+<!-- 2 PASSWORD -->
+<section class="screen" id="s2">
+  <div class="bg"></div>
+  <div class="web"></div>
 
-<section class="screen password" id="screen2">
-
-  <div class="content">
-
+  <div class="panel">
     <h2>SECRET ACCESS</h2>
+    <div class="small">SPIDER-VERSE DATABASE // RESTRICTED</div>
 
-    <p class="sub">
-      Only Danish can enter 🕷️
-    </p>
+    <div class="display" id="display"></div>
 
-    <div class="password-card">
+    <div class="code">
+      <button class="key" onclick="key('1')">1</button>
+      <button class="key" onclick="key('2')">2</button>
+      <button class="key" onclick="key('3')">3</button>
+      <button class="key" onclick="key('4')">4</button>
+      <button class="key" onclick="key('5')">5</button>
+      <button class="key" onclick="key('6')">6</button>
+      <button class="key" onclick="key('7')">7</button>
+      <button class="key" onclick="key('8')">8</button>
+      <button class="key" onclick="key('9')">9</button>
+      <button class="key" onclick="clearCode()">×</button>
+      <button class="key" onclick="key('0')">0</button>
+      <button class="key" onclick="checkCode()">✓</button>
+    </div>
 
-      <div class="dots">
+    <div class="hint">hint: a special date 👀</div>
+  </div>
+</section>
 
-        <span class="dot"></span>
-        <span class="dot"></span>
-        <span class="dot"></span>
-        <span class="dot"></span>
 
+<!-- 3 MISSION -->
+<section class="screen" id="s3">
+  <div class="bg"></div>
+  <div class="comic-wrap">
+    <div class="comic-title">MISSION UNLOCKED!</div>
+
+    <div class="comic-box">
+      <h3>HEY, DANISH.</h3>
+      <p>
+        Looks like you made it through the first level.
+        There is something waiting for you.
+        But first... you have to find it.
+      </p>
+
+      <button class="next" onclick="go(4)">
+        FIND THE PACKAGE →
+      </button>
+    </div>
+  </div>
+</section>
+
+
+<!-- 4 GIFT -->
+<section class="screen" id="s4">
+  <div class="bg"></div>
+  <div class="gift">
+    <h2>UNKNOWN PACKAGE 📦</h2>
+
+    <div class="box" id="giftBox" onclick="openGift()"></div>
+
+    <div class="tap" id="giftText">
+      tap the box.
+    </div>
+  </div>
+</section>
+
+
+<!-- 5 CAKE -->
+<section class="screen" id="s5">
+  <div class="bg"></div>
+
+  <div class="cake-area">
+    <h2>LEVEL 2: MAKE A WISH</h2>
+
+    <div class="cake" id="cake" onclick="blowCake()">
+      <div class="candle">
+        <div class="flame"></div>
       </div>
-
-      <div class="keypad">
-
-        <button class="key" onclick="press('1')">1</button>
-        <button class="key" onclick="press('2')">2</button>
-        <button class="key" onclick="press('3')">3</button>
-
-        <button class="key" onclick="press('4')">4</button>
-        <button class="key" onclick="press('5')">5</button>
-        <button class="key" onclick="press('6')">6</button>
-
-        <button class="key" onclick="press('7')">7</button>
-        <button class="key" onclick="press('8')">8</button>
-        <button class="key" onclick="press('9')">9</button>
-
-        <button class="key" onclick="erase()">⌫</button>
-        <button class="key" onclick="press('0')">0</button>
-        <button class="key" onclick="checkPassword()">✓</button>
-
-      </div>
-
-      <div class="error" id="error"></div>
-
     </div>
 
+    <div class="cake-msg" id="cakeMsg">
+      <h3>ONE MORE YEAR, ONE MORE ADVENTURE 🕷️</h3>
+      <p>tap the cake to continue.</p>
+    </div>
   </div>
-
 </section>
 
 
-<!-- =========================
-     3. GIFT
-========================= -->
+<!-- 6 LETTER -->
+<section class="screen" id="s6">
+  <div class="bg"></div>
 
-<section class="screen gift-screen" id="screen3">
-
-  <div class="content">
-
-    <div class="gift" id="gift">🎁</div>
-
-    <h2>A GIFT FOR YOU</h2>
-
-    <p class="sub">
-      Something small, but made just for you.
-    </p>
-
-    <button class="btn" onclick="openGift()">
-      OPEN GIFT 🎁
-    </button>
-
-  </div>
-
-</section>
-
-
-<!-- =========================
-     4. CAKE
-========================= -->
-
-<section class="screen cake-screen" id="screen4">
-
-  <div class="content">
-
-    <div class="candles" id="candles">
-      <span class="flame">🔥</span>
-      <span class="flame">🔥</span>
-      <span class="flame">🔥</span>
-    </div>
-
-    <div class="cake" id="cake">
-      🎂
-    </div>
-
-    <h2>MAKE A WISH</h2>
-
-    <p class="sub">
-      Close your eyes... make a wish... 🕷️
-    </p>
-
-    <button class="btn" onclick="blowCake()">
-      BLOW THE CANDLES
-    </button>
-
-  </div>
-
-</section>
-
-
-<!-- =========================
-     5. LETTER
-========================= -->
-
-<section class="screen letter-screen" id="screen5">
-
-  <div class="content">
-
-    <h2>A LETTER FOR YOU</h2>
+  <div class="letter-scene">
+    <h2 class="comic-title">A MESSAGE FOR YOU</h2>
 
     <div class="envelope" id="envelope" onclick="openLetter()">
-
-      <div class="env-body"></div>
-
-      <div class="letter-paper">
-
-        <h3>Happy Birthday ♡</h3>
+      <div class="paper">
+        <div class="letter-title">Happy Birthday, Danish 🤍</div>
 
         <p>
           happy birthdayyy 🥳🤍 hope you have a really good day today . semoga panjang umur , murah rezeki and everything goes well for you . i hope you get all the happiness you deserve , and semoga tahun ni jadi tahun yang lebih baik for you . enjoy your dayy! 🎂💗
         </p>
-
       </div>
-
-      <div class="env-flap"></div>
-
     </div>
 
-    <p class="open-hint" id="letterHint">
-      Tap the envelope to open it ♡
-    </p>
-
-    <button class="btn" id="letterNext" style="display:none" onclick="goTo(6)">
-      CONTINUE 🕸️
+    <button class="next" onclick="go(7)">
+      NEXT PAGE →
     </button>
-
   </div>
-
 </section>
 
 
-<!-- =========================
-     6. BOUQUET
-========================= -->
+<!-- 7 BOUQUET -->
+<section class="screen" id="s7">
+  <div class="bg"></div>
 
-<section class="screen bouquet-screen" id="screen6">
+  <div class="bouquet">
+    <h2>DIGITAL BOUQUET 💐</h2>
 
-  <div class="content">
-
-    <h2>A LITTLE BOUQUET 🌹</h2>
-
-    <p class="sub">
-      Tap each flower for a little message.
-    </p>
-
-    <div class="bouquet">
-      💐
+    <div class="flowers">
+      <div class="flower" onclick="flowerMsg('a little flower for your birthday 🌷')">🌷</div>
+      <div class="flower" onclick="flowerMsg('hope today makes you smile 🌻')">🌻</div>
+      <div class="flower" onclick="flowerMsg('sending you good vibes 🌹')">🌹</div>
+      <div class="flower" onclick="flowerMsg('another one because one is not enough 💐')">🌸</div>
+      <div class="flower" onclick="flowerMsg('and one last flower for Danish 🤍')">🌼</div>
     </div>
 
-    <div class="flower-grid">
-
-      <button class="flower"
-      onclick="showPopup('🌹 You deserve happiness, always.')">
-        <div class="flower-icon">🌹</div>
-        <small>Happiness</small>
-      </button>
-
-      <button class="flower"
-      onclick="showPopup('🌷 I hope you always have something to smile about.')">
-        <div class="flower-icon">🌷</div>
-        <small>Smiles</small>
-      </button>
-
-      <button class="flower"
-      onclick="showPopup('🌻 I hope this year brings you closer to your dreams.')">
-        <div class="flower-icon">🌻</div>
-        <small>Dreams</small>
-      </button>
-
-      <button class="flower"
-      onclick="showPopup('🌸 Take care of yourself and remember to rest.')">
-        <div class="flower-icon">🌸</div>
-        <small>Take care</small>
-      </button>
-
-      <button class="flower"
-      onclick="showPopup('🌼 May your days be filled with little happy moments.')">
-        <div class="flower-icon">🌼</div>
-        <small>Good days</small>
-      </button>
-
-      <button class="flower"
-      onclick="showPopup('💐 Thank you for being someone worth knowing.')">
-        <div class="flower-icon">💐</div>
-        <small>Thank you</small>
-      </button>
-
+    <div class="flower-msg" id="flowerMsg">
+      tap every flower.
     </div>
 
-    <button class="btn" onclick="goTo(7)">
-      NEXT 🕷️
+    <button class="next" onclick="go(8)">
+      KEEP GOING →
     </button>
-
   </div>
-
 </section>
 
 
-<!-- =========================
-     7. STORY
-========================= -->
+<!-- 8 STORY -->
+<section class="screen" id="s8">
+  <div class="bg"></div>
 
-<section class="screen story-screen" id="screen7">
+  <div class="story">
+    <h2>SPIDER-VERSE FILES</h2>
 
-  <div class="content">
-
-    <h2>OUR STORY ♡</h2>
-
-    <p class="sub">
-      A few little chapters.
-    </p>
-
-    <div class="story">
-
-      <div class="story-card">
-        <h3>01 — The Beginning</h3>
-        <p>
-          Somewhere along the way, you became someone I was happy to know.
-        </p>
-      </div>
-
-      <div class="story-card">
-        <h3>02 — Little Moments</h3>
-        <p>
-          The random conversations and silly moments became memories in their own way.
-        </p>
-      </div>
-
-      <div class="story-card">
-        <h3>03 — Right Now</h3>
-        <p>
-          I don't know what the future looks like, but I'm glad our paths crossed.
-        </p>
-      </div>
-
-    </div>
-
-    <button class="btn" onclick="goTo(8)">
-      NEXT ♡
-    </button>
-
-  </div>
-
-</section>
-
-
-<!-- =========================
-     8. MUSIC
-========================= -->
-
-<section class="screen music-screen" id="screen8">
-
-  <div class="content">
-
-    <div class="music-card">
-
-      <div class="disc" id="disc">
-        🕷️
-      </div>
-
-      <h2>ONE SONG FOR YOU</h2>
-
-      <p class="sub">
-        Just press play and let it play.
+    <div class="card show" id="storyCard">
+      <h3>PAGE 01</h3>
+      <p>
+        Some people just randomly become part of your story,
+        and somehow the little moments end up meaning a lot.
       </p>
-
-      <button class="music-button" id="musicButton"
-      onclick="toggleMusic()">
-        ▶ PLAY
-      </button>
-
-      <p class="sub" style="margin-top:15px;">
-        🎵 Your little Spider-Man song
-      </p>
-
     </div>
 
-    <button class="btn" onclick="goTo(9)">
-      CONTINUE 🕸️
+    <button class="story-btn" onclick="nextStory()">
+      TURN THE PAGE →
     </button>
-
   </div>
-
 </section>
 
 
-<!-- =========================
-     9. GRATITUDE
-========================= -->
+<!-- 9 MUSIC -->
+<section class="screen" id="s9">
+  <div class="bg"></div>
 
-<section class="screen gratitude-screen" id="screen9">
+  <div class="music">
+    <h2>YOUR SOUNDTRACK 🎧</h2>
 
-  <div class="content">
+    <div class="vinyl" id="vinyl"></div>
 
-    <div class="jar">
-      🫙
-    </div>
+    <p>one song for this little birthday mission.</p>
 
-    <h2>WHY I'M GRATEFUL TO KNOW YOU</h2>
-
-    <p class="sub">
-      Tap the jar for a random note.
-    </p>
-
-    <div class="note" id="note">
-      Tap "open a note" ♡
-    </div>
-
-    <button class="btn" onclick="newNote()">
-      OPEN A NOTE 💌
+    <button class="play" onclick="toggleMusic()">
+      ▶ PLAY MUSIC
     </button>
+
+    <br><br>
+
+    <button class="next" onclick="go(10)">
+      NEXT →
+    </button>
+
+    <audio id="song" src="spiderman_song.mp3"></audio>
+  </div>
+</section>
+
+
+<!-- 10 NOTES -->
+<section class="screen" id="s10">
+  <div class="bg"></div>
+
+  <div class="notes">
+    <h2>WHY YOU MATTER ✦</h2>
+
+    <div class="note show">
+      You're someone worth appreciating.
+    </div>
+
+    <div class="note show">
+      Your presence can make ordinary moments feel a little better.
+    </div>
+
+    <div class="note show">
+      You deserve good things, good people and good days.
+    </div>
+
+    <div class="note show">
+      And today is definitely your day. 🤍
+    </div>
+
+    <button class="next" onclick="go(11)">
+      FINAL PAGE →
+    </button>
+  </div>
+</section>
+
+
+<!-- 11 FINAL -->
+<section class="screen" id="s11">
+  <div class="bg"></div>
+  <div class="web"></div>
+
+  <div id="confetti"></div>
+
+  <div class="final">
+    <div class="comic-title">MISSION COMPLETE</div>
+
+    <h1>HAPPY</h1>
+    <h2>BIRTHDAY, DANISH 🕷️</h2>
+
+    <p>
+      Whatever universe you're in,
+      I hope this year brings you
+      plenty of reasons to smile.
+    </p>
 
     <br>
 
-    <button class="btn" onclick="goTo(10)">
-      ONE LAST THING...
-    </button>
-
-  </div>
-
-</section>
-
-
-<!-- =========================
-     10. FINAL
-========================= -->
-
-<section class="screen final-screen" id="screen10">
-
-  <div class="content">
-
-    <div class="final-spider">
-      🕷️
+    <div class="comic">
+      <span class="red">TO BE CONTINUED...</span>
     </div>
-
-    <div class="redline"></div>
-
-    <h1 class="final-title">
-      HAPPY BIRTHDAY,<br>
-      DANISH! ❤️
-    </h1>
-
-    <p>
-      I hope this little surprise<br>
-      made you smile.
-    </p>
-
-    <p class="sub" style="margin-top:12px;">
-      Have the best day ever ♡
-    </p>
-
-    <button class="btn" onclick="celebrate()">
-      CELEBRATE 🎉
-    </button>
-
   </div>
-
 </section>
 
-
-<!-- =========================
-     POPUP
-========================= -->
-
-<div class="popup" id="popup">
-
-  <p id="popupText"></p>
-
-  <button onclick="closePopup()">
-    CLOSE ♡
-  </button>
-
-</div>
-
-
-<!-- =========================
-     JAVASCRIPT
-========================= -->
 
 <script>
 
-/* =========================
-   NAVIGATION
-========================= */
+let current=1;
+let entered="";
+let storyPage=1;
 
-function goTo(number){
+function go(num){
 
-  document.querySelectorAll(".screen").forEach(function(screen){
-    screen.classList.remove("active");
+  document.querySelectorAll(".screen").forEach(s=>{
+    s.classList.remove("active");
   });
 
-  const next = document.getElementById("screen" + number);
+  document.getElementById("s"+num).classList.add("active");
+  current=num;
 
-  if(next){
-    next.classList.add("active");
+  if(num===11){
+    makeConfetti();
+  }
+}
+
+
+/* PASSWORD */
+
+function key(num){
+
+  if(entered.length<4){
+    entered+=num;
+    document.getElementById("display").textContent=
+      "•".repeat(entered.length);
   }
 
-  if(number === 7){
-    revealStory();
+  if(entered.length===4){
+    setTimeout(checkCode,300);
   }
-
 }
 
-
-/* =========================
-   PASSWORD
-========================= */
-
-let password = "";
-
-function press(number){
-
-  if(password.length >= 4){
-    return;
-  }
-
-  password += number;
-
-  updateDots();
-
+function clearCode(){
+  entered="";
+  document.getElementById("display").textContent="";
 }
 
-function erase(){
+function checkCode(){
 
-  password = password.slice(0,-1);
-
-  updateDots();
-
-}
-
-function updateDots(){
-
-  const dots = document.querySelectorAll(".dot");
-
-  dots.forEach(function(dot,index){
-
-    if(index < password.length){
-      dot.classList.add("on");
-    }else{
-      dot.classList.remove("on");
-    }
-
-  });
-
-}
-
-function checkPassword(){
-
-  const error = document.getElementById("error");
-
-  if(password === "0511"){
-
-    error.innerText = "Access granted ♡";
-
-    setTimeout(function(){
-      goTo(3);
-    },500);
-
+  if(entered==="0511"){
+    document.getElementById("display").textContent="✓";
+    setTimeout(()=>go(3),500);
   }else{
-
-    error.innerText = "Wrong code... try again 🕷️";
-
-    password = "";
-
-    updateDots();
-
+    document.getElementById("display").textContent="NOPE";
+    setTimeout(clearCode,700);
   }
-
 }
 
 
-/* =========================
-   GIFT
-========================= */
+/* GIFT */
 
 function openGift(){
 
-  const gift = document.getElementById("gift");
+  const box=document.getElementById("giftBox");
+  const text=document.getElementById("giftText");
 
-  gift.classList.add("open");
+  box.classList.add("open");
+  text.textContent="MISSION ITEM FOUND 🕷️";
 
-  setTimeout(function(){
-
-    goTo(4);
-
-  },650);
-
+  setTimeout(()=>go(5),1000);
 }
 
 
-/* =========================
-   CAKE
-========================= */
+/* CAKE */
 
 function blowCake(){
 
-  const cake = document.getElementById("cake");
-  const candles = document.getElementById("candles");
+  const cake=document.getElementById("cake");
+  cake.classList.add("blown");
 
-  candles.classList.add("blown");
+  document.getElementById("cakeMsg").innerHTML=
+    "<h3>WISH GRANTED ✨</h3><p>tap the message to continue.</p>";
 
-  cake.innerText = "🎂✨";
-
-  setTimeout(function(){
-
-    goTo(5);
-
-  },1200);
-
+  document.getElementById("cakeMsg").onclick=()=>go(6);
 }
 
 
-/* =========================
-   LETTER
-========================= */
+/* LETTER */
 
 function openLetter(){
+  document.getElementById("envelope").classList.toggle("open");
+}
 
-  const envelope =
-    document.getElementById("envelope");
 
-  const hint =
-    document.getElementById("letterHint");
+/* FLOWERS */
 
-  const next =
-    document.getElementById("letterNext");
+let flowersClicked=0;
 
-  if(!envelope.classList.contains("open")){
+function flowerMsg(text){
 
-    envelope.classList.add("open");
+  flowersClicked++;
 
-    hint.innerText = "A little birthday message for you ♡";
+  document.getElementById("flowerMsg").textContent=text;
 
-    setTimeout(function(){
+  if(flowersClicked>=5){
+    setTimeout(()=>{
+      document.getElementById("flowerMsg").textContent=
+      "you found all five messages 💗";
+    },700);
+  }
+}
 
-      next.style.display = "inline-block";
 
-    },900);
+/* STORY */
 
+const stories=[
+  {
+    title:"PAGE 01",
+    text:"Some people just randomly become part of your story, and somehow the little moments end up meaning a lot."
+  },
+  {
+    title:"PAGE 02",
+    text:"Not every memory needs a camera. Sometimes the smallest conversations are the ones you remember."
+  },
+  {
+    title:"PAGE 03",
+    text:"Different days, different moments, same wish: I hope life treats you kindly."
+  },
+  {
+    title:"PAGE 04",
+    text:"So here's to another chapter, another year and plenty of new things waiting ahead."
+  }
+];
+
+function nextStory(){
+
+  storyPage++;
+
+  if(storyPage>stories.length){
+    go(9);
+    return;
   }
 
+  const card=document.getElementById("storyCard");
+
+  card.classList.remove("show");
+
+  setTimeout(()=>{
+
+    card.innerHTML=
+      "<h3>"+stories[storyPage-1].title+"</h3>"+
+      "<p>"+stories[storyPage-1].text+"</p>";
+
+    card.classList.add("show");
+
+  },150);
 }
 
 
-/* =========================
-   POPUP
-========================= */
+/* MUSIC */
 
-function showPopup(text){
-
-  document.getElementById("popupText").innerText = text;
-
-  document.getElementById("popup").classList.add("show");
-
-}
-
-function closePopup(){
-
-  document.getElementById("popup").classList.remove("show");
-
-}
-
-
-/* =========================
-   STORY ANIMATION
-========================= */
-
-function revealStory(){
-
-  const cards =
-    document.querySelectorAll(".story-card");
-
-  cards.forEach(function(card,index){
-
-    setTimeout(function(){
-
-      card.classList.add("show");
-
-    },index * 500);
-
-  });
-
-}
-
-
-/* =========================
-   MUSIC
-========================= */
-
-const music =
-  new Audio("spiderman_song.mp3");
-
-const musicButton =
-  document.getElementById("musicButton");
-
-const disc =
-  document.getElementById("disc");
-
-let playing = false;
+const song=document.getElementById("song");
+const vinyl=document.getElementById("vinyl");
 
 function toggleMusic(){
 
-  if(!playing){
+  const button=document.querySelector(".play");
 
-    music.play().then(function(){
+  if(song.paused){
 
-      playing = true;
+    song.play();
 
-      musicButton.innerText = "⏸ PAUSE";
-
-      disc.classList.add("playing");
-
-    }).catch(function(){
-
-      showPopup(
-        "Make sure spiderman_song.mp3 is in the same GitHub folder as index.html 🕷️"
-      );
-
-    });
+    vinyl.classList.add("playing");
+    button.textContent="❚❚ PAUSE MUSIC";
 
   }else{
 
-    music.pause();
+    song.pause();
 
-    playing = false;
-
-    musicButton.innerText = "▶ PLAY";
-
-    disc.classList.remove("playing");
+    vinyl.classList.remove("playing");
+    button.textContent="▶ PLAY MUSIC";
 
   }
-
-}
-
-music.addEventListener("ended",function(){
-
-  playing = false;
-
-  musicButton.innerText = "▶ PLAY";
-
-  disc.classList.remove("playing");
-
-});
-
-
-/* =========================
-   GRATITUDE NOTES
-========================= */
-
-const notes = [
-
-  "I'm grateful that I got to know someone like you. 🤍",
-
-  "You make ordinary moments feel a little more memorable.",
-
-  "I'm thankful for all the random conversations we've had.",
-
-  "You deserve people who genuinely appreciate you.",
-
-  "I'm glad our paths crossed. ♡",
-
-  "I hope you always remember that you matter.",
-
-  "Thank you for being part of some of my favourite little moments."
-
-];
-
-function newNote(){
-
-  const note =
-    document.getElementById("note");
-
-  const random =
-    Math.floor(Math.random() * notes.length);
-
-  note.innerText = notes[random];
-
 }
 
 
-/* =========================
-   FINAL CONFETTI
-========================= */
+/* CONFETTI */
 
-function celebrate(){
+function makeConfetti(){
 
-  const symbols = [
-    "🕷️",
-    "❤️",
-    "🕸️",
-    "✨",
-    "🎉",
-    "🎀",
-    "♥"
-  ];
+  const area=document.getElementById("confetti");
+  area.innerHTML="";
 
-  for(let i=0;i<60;i++){
+  for(let i=0;i<45;i++){
 
-    const piece =
-      document.createElement("div");
+    const c=document.createElement("div");
 
-    piece.className = "confetti";
+    c.className="confetti";
 
-    piece.innerText =
-      symbols[Math.floor(Math.random() * symbols.length)];
+    c.style.left=Math.random()*100+"%";
+    c.style.animationDelay=Math.random()*3+"s";
+    c.style.animationDuration=(2.5+Math.random()*3)+"s";
 
-    piece.style.left =
-      Math.random() * 100 + "vw";
-
-    piece.style.fontSize =
-      (12 + Math.random() * 18) + "px";
-
-    piece.style.animationDuration =
-      (2.5 + Math.random() * 2.5) + "s";
-
-    piece.style.animationDelay =
-      Math.random() * 1.2 + "s";
-
-    document.body.appendChild(piece);
-
-    setTimeout(function(){
-
-      piece.remove();
-
-    },6000);
-
+    area.appendChild(c);
   }
-
 }
 
 </script>
